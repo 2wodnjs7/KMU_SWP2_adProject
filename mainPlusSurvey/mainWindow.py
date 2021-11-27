@@ -32,7 +32,6 @@ class MainWindow(QWidget):
     def rcmdClicked(self):
         pass
 
-
 if __name__ == '__main__':
     import sys
     app = QApplication(sys.argv)
