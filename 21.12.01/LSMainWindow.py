@@ -6,53 +6,54 @@ from LocaleSearcher import *
 
 food = '떡볶이'
 
-class LSMainWindow(QMainWindow):
+class LSMainWindow(QWidget):
 
-    def __init__(self):
+    def __init__(self, widget):
         super().__init__()
-
+        self.widget = widget
         self.dbfilename = 'foodBookmark.dat'
         self.restaurantDB = []
         self.ReadRestaurantDB()
-
         self.resize(1080, 640)
-        self.widget = QWidget()  # QGridLayout개체를 배치할 Widget 개체 생성
-        self.setCentralWidget(self.widget)  # LSMainWindow의 CentralWidget 설정
-        self.grid = QGridLayout(self.widget)  # QGridLayout 개체 생성
+        #self.widget = QWidget()  # QGridLayout개체를 배치할 Widget 개체 생성
+        #self.setCentralWidget()  # LSMainWindow의 CentralWidget 설정
+        grid = QGridLayout()  # QGridLayout 개체 생성
 
         self.setWindowTitle('내 거주지 주변 음식점 검색')  # 윈도우 타이틀
         self.query = QLineEdit()
         self.query.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.grid.addWidget(self.query, 0, 0)
+        grid.addWidget(self.query, 0, 0)
         self.btnSearch = QPushButton()
         self.btnSearch.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.grid.addWidget(self.btnSearch, 1, 0)
+        grid.addWidget(self.btnSearch, 1, 0)
         self.btnSearch.setText("내 거주지 입력 및 검색")
 
         self.lbox = QListWidget()
-        self.grid.addWidget(self.lbox, 2, 0)  # row, column, row_span, column_span
+        grid.addWidget(self.lbox, 2, 0)  # row, column, row_span, column_span
 
         self.btnSave = QPushButton()
         self.btnSave.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.grid.addWidget(self.btnSave, 3, 0)
+        grid.addWidget(self.btnSave, 3, 0)
         self.btnSave.setText("해당 음식점 저장")
 
         self.btnBookmark = QPushButton()
         self.btnBookmark.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.grid.addWidget(self.btnBookmark, 4, 0)
+        grid.addWidget(self.btnBookmark, 4, 0)
         self.btnBookmark.setText("즐겨찾기 보기")
 
         self.webEngineView = QWebEngineView()
-        self.grid.addWidget(self.webEngineView, 0, 1, 5, 1)  # row, column, row_span, column_span
+        grid.addWidget(self.webEngineView, 0, 1, 5, 1)  # row, column, row_span, column_span
         #self.webEngineView.load(QUrl("http://localhost/kookminMap/map.html"))
         self.webEngineView.load(QUrl("https://2wodnjs7.github.io/web1/"))
-        self.grid.setRowStretch(0, 1)
-        self.grid.setRowStretch(1, 1)
-        self.grid.setRowStretch(2, 16)
-        self.grid.setRowStretch(3, 1)
-        self.grid.setRowStretch(4, 1)
-        self.grid.setColumnStretch(0, 1)
-        self.grid.setColumnStretch(1, 4)
+        grid.setRowStretch(0, 1)
+        grid.setRowStretch(1, 1)
+        grid.setRowStretch(2, 16)
+        grid.setRowStretch(3, 1)
+        grid.setRowStretch(4, 1)
+        grid.setColumnStretch(0, 1)
+        grid.setColumnStretch(1, 4)
+
+        self.setLayout(grid)
 
         self.btnSearch.clicked.connect(self.Search)
         self.lbox.currentItemChanged.connect(self.LboxSelectChanged)
@@ -102,7 +103,7 @@ class LSMainWindow(QMainWindow):
         #a = pickle.load(fH)
         #print(a)
         #fH.close()
-        self.setCurrentIndex(self.currentIndex() + 1)
+        self.widget.setCurrentIndex(self.widget.currentIndex() + 1)
 
     def Move(self, x, y):
         page = self.webEngineView.page()
