@@ -1,10 +1,10 @@
 import pickle
-
 from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtCore import QUrl
 from LocaleSearcher import *
+
 
 class LSMainWindow(QWidget):
 
@@ -14,7 +14,6 @@ class LSMainWindow(QWidget):
         self.dbfilename = 'foodBookmark.dat'
         self.restaurantDB = []
         self.ReadRestaurantDB()
-        self.resize(1080, 640)
         self.setWindowTitle('내 거주지 주변 음식점 검색')
         grid = QGridLayout()
 
@@ -24,43 +23,43 @@ class LSMainWindow(QWidget):
         self.setPalette(self.pal)
 
         self.query = QLineEdit()
-        self.query.setStyleSheet("border-style:none;background-color: #E3FDFD;font-size:20px;font-family:NanumBarunGothic;")
+        self.query.setStyleSheet("border-width:1px;border-color:#71C9CE;border-style:solid;background-color:#CBF1F5;font-size:20px;font-family:NanumBarunGothic;")
         self.query.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        grid.addWidget(self.query, 0, 0)
 
         self.btnSearch = QPushButton()
-        self.btnSearch.setStyleSheet("background-color: #71C9CE;font-size:20px;font-family:NanumBarunGothic;")
+        self.btnSearch.setStyleSheet("background-color:#71C9CE;font-size:20px;font-family:NanumBarunGothic;")
         self.btnSearch.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        grid.addWidget(self.btnSearch, 1, 0)
         self.btnSearch.setText("내 거주지 입력 및 검색")
 
         self.lbox = QListWidget()
-        self.lbox.setStyleSheet("border-style:none;background-color: #CBF1F5;font-size:16px;font-family:NanumBarunGothic;")
-
-        grid.addWidget(self.lbox, 2, 0)
+        self.lbox.setStyleSheet("border-width:1px;border-color:#71C9CE;border-style:solid;background-color:#CBF1F5;font-size:16px;font-family:NanumBarunGothic;")
 
         self.btnSave = QPushButton()
         self.btnSave.setStyleSheet("background-color: #71C9CE;font-size:20px;font-family:NanumBarunGothic;")
         self.btnSave.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        grid.addWidget(self.btnSave, 3, 0)
         self.btnSave.setText("해당 음식점 저장")
 
         self.btnBookmark = QPushButton()
         self.btnBookmark.setStyleSheet("background-color: #71C9CE;font-size:20px;font-family:NanumBarunGothic;")
         self.btnBookmark.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        grid.addWidget(self.btnBookmark, 4, 0)
         self.btnBookmark.setText("즐겨찾기 보기")
 
         self.webEngineView = QWebEngineView()
-        grid.addWidget(self.webEngineView, 0, 1, 5, 1)
         self.webEngineView.load(QUrl("https://2wodnjs7.github.io/web1/"))
+
+        grid.addWidget(self.query, 0, 0)
+        grid.addWidget(self.btnSearch, 1, 0)
+        grid.addWidget(self.lbox, 2, 0)
+        grid.addWidget(self.btnSave, 3, 0)
+        grid.addWidget(self.btnBookmark, 4, 0)
+        grid.addWidget(self.webEngineView, 0, 1, 5, 1)
         grid.setRowStretch(0, 3)
         grid.setRowStretch(1, 3)
         grid.setRowStretch(2, 28)
         grid.setRowStretch(3, 3)
         grid.setRowStretch(4, 3)
-        grid.setColumnStretch(0, 3)
-        grid.setColumnStretch(1, 10)
+        grid.setColumnStretch(0, 1)
+        grid.setColumnStretch(1, 4)
 
         self.setLayout(grid)
 

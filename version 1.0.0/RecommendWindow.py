@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QPushButton, QLineEdit
 from PyQt5.Qt import QLabel
 from foodDB import foods
 
+
 class RecommendWindow(QWidget):
 
     def __init__(self, widget):
