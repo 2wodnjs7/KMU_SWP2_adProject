@@ -1,10 +1,8 @@
 import pickle
 import webbrowser
-
 from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtWidgets import *
 
-food = '떡볶이'
 
 class BookMark(QWidget):
 
@@ -98,7 +96,7 @@ class BookMark(QWidget):
             pass
         self.lbox.clear()
         for p in self.restaurantDB:
-            msg = p[0] + ' - ' + p[1] + '\n' + p[2] + '\t' + p[3] + ' \t'
+            msg ='[' + p[0] + '] - ' + p[1] + '\n' + p[2] + '\t' + p[3] + ' \t'
             self.lbox.addItem(msg)
 
         fH.close()
