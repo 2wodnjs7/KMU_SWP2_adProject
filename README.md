@@ -1,6 +1,13 @@
 KMU_SWP2_adProject // 
 PyQtWebEngine 패키지 설치
 
+
+-------------------------------------------------
+# version 1.0.2 릴리즈 (21.12.04.)
+1. 첫 화면 'version x.x.x' 짤림 현상 수정
+2. BookmarkWindow.py에서 foodBookmark.dat가 없으면 실행되지 않는 현상 수정
+
+-------------------------------------------------
 # version 1.0.1 릴리즈 (21.12.03.)
 1. 전체 디자인 색깔 변화 (이세현)
 2. SurveyWindow1, SurveyWindow2 에서 버튼의 반복 코드 개선 (이재원)
