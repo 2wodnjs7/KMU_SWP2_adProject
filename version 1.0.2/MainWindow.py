@@ -18,7 +18,7 @@ class MainWindow(QWidget):
         self.setAutoFillBackground(True)
         self.setPalette(self.pal)
 
-        self.aLabel = QLabel('    오늘은\n        뭐 먹지', self)
+        self.aLabel = QLabel('    오늘은\n      뭐 먹지?', self)
         self.aLabel.setMaximumHeight(300)
         self.aLabel.setStyleSheet("color:#252A34;font-size:130px;font-family:NanumBarunGothic;")
         self.aLabel.setAlignment(Qt.AlignVCenter)
